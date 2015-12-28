@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Functions>
+	<func name="Func" text="功能菜单" type="root">
+		<func name="Myhome" text="我的主页" icon="money" type="myhome">
+			<!--<func name="NoticePortal" text="公告信息">
+				<privilege text="浏览" name="view"/>
+			</func>-->
+			<func name="LoginStat" text="登陆信息统计">
+				<privilege text="浏览" name="view"/>
+			</func> 
+		</func>
+		<func name="App" text="考勤功能" icon="calendar" type="category">
+			<func name="AttendancePlus" text="考勤信息增补">
+				<privilege text="浏览" name="view"/>
+				<privilege text="补刷卡" name="prepareAdd"/>
+				<privilege text="增加" name="add"/>
+				<privilege text="删除" name="del"/>
+				<privilege text="修改" name="edit"/>
+			</func>
+			<!--添加服务管理班次设置模块-->
+			<func name="ServiceManagementBrowse" text="服务管理班次设置" >
+				<privilege text="浏览" name="view"></privilege>
+				<privilege text="班次时间设置" name="browseButton" />
+				<privilege text="导入排班表格" name="importBrowse" />
+			</func>
+
+			<func name="ShiftConfig" text="班次批量设置">
+				<privilege text="浏览" name="view"/>
+				<privilege text="增加" name="add"/>
+				<privilege text="删除" name="del"/>
+				<privilege text="修改" name="edit"/>
+				<privilege text="默认排班设置" name="working"/>
+				<privilege text="取消网点错误排班" name="cancalMistake"/>
+			</func>
+			<func name="ShiftBrowse" text="班次浏览及修改">
+				<privilege text="浏览" name="view"/>
+				<privilege text="导出排班报表" name="exportOrgShift"/>
+			</func>
+			<func name="BranchShiftConfig" text="网点班次设置">
+				<privilege text="浏览" name="view"/>
+				<privilege text="清除排版" name='delAll'/>
+				<privilege text="模板设置" name="template"/>
+				<privilege text="导出全行排班报表" name="export"/>
+				<privilege text="区域人员调班" name="areaChange"/>
+				<privilege text="设置默认时间" name="defaultTime"/>
+			</func>
+			<func name="BranchShiftAnalysis" text="网点班次分析">
+				<privilege text="浏览" name="view"/>
+				<privilege text="情况说明" name="explain"/>
+				<privilege text="重新统计" name="statistics"/>
+			</func>
+			<func name="HolidayApply" text="请假申请流程">
+				<privilege text="浏览" name="view"/>
+				<privilege text="填请假申请表" name="add"/>
+				<privilege text="填加班申请表" name="workOverTime"/>
+				<privilege text="删除" name="del"/>
+				<privilege text="修改" name="edit"/>
+				<privilege text="审批" name="approve"/>
+				<privilege text="详细信息" name="browseView"/>
+				<privilege text="归档" name="placeOnFile"/>
+				<privilege text="销假" name="cancelBt"/>
+				<privilege text="办公室审核" name="bossAffirm"/>
+			</func>
+			<!--<func name="Notice" text="公告信息">
+				<privilege text="浏览" name="view"/>
+				<privilege text="增加" name="add"/>
+				<privilege text="删除" name="del"/>
+				<privilege text="修改" name="edit"/>
+			</func>-->			
+		</func>
+		
+		<func name="Reports" text="查询统计" icon="chart" type="category">
+			<func name="AttendanceLog" text="考勤原始数据查询">
+				<privilege text="浏览" name="view"/>
+				<privilege text="补刷卡" name="prepareAdd"/>
+			</func>
+			<func name="AttendanceStatSearch" text="考勤记录查询">
+				<privilege text="浏览" name="view"/>
+				<privilege text="导入Excel" name="import"/>
+				<privilege text="确认" name="affirm"/>
+				<privilege text="取消确认" name="cancelAffirm"/>
+				<privilege text="补刷卡" name = "pushCard"/>
+			</func>
+			<func name="AttendanceLogReport" text="考勤记录统计">
+				<privilege text="浏览" name="view"/>
+				<privilege text="月报表" name="monthReport"/>
+				<privilege text="输出报表" name="outputRport"/>
+				<privilege text="输出员工请假详细" name="yearReport"/>
+				<privilege text="人员休病假报表" name="monthHolidayReport"/>
+				<privilege text="人员考勤统计表" name="yearAttendanceReport"/>
+				<privilege text="考勤统计确认" name='verReport'/>
+				<privilege text="取消确认" name='cancelMAffirm'/>
+				<privilege text="领导确认" name="leaderAffirm"/>
+			</func>
+		</func>
+		
+		<func name="Device" text="设备管理" icon="monitor" type="category"><!--
+			<func name="DeviceMonitor" text="考勤机监控">
+				<privilege text="浏览" name="view"/>
+				<privilege text="增加" name="add"/>
+				<privilege text="删除" name="del"/>
+				<privilege text="修改" name="edit"/>
+			</func>
+			--><func name="DeviceManager" text="考勤机管理">
+				<privilege text="浏览" name="view"/>
+				<privilege text="增加" name="add"/>
+				<privilege text="删除" name="del"/>
+				<privilege text="修改" name="edit"/>
+				<privilege text="上传用户" name="uploadEmployee"/>
+			</func>
+		</func>
+		
+		<func name="Admin" text="系统设置" icon="settings" type="category">
+			<func name="Employee" text="员工管理" >
+				<privilege text="浏览" name="view"/>
+				<privilege text="增加" name="add"/>
+				<privilege text="删除" name="del"/>
+				<privilege text="修改" name="edit"/>
+				<privilege text="年假计算" name="annualLeaveJob"/>
+				<privilege text="导出备份" name="exportEmployee"/>
+				<privilege text="导入员工" name="importEmployee"/>
+				<privilege text="薪资导入" name="importSalary"/>
+				<privilege text="员工卡号导出" name="exportAllEmployeesCard"/>
+			</func>
+			<!--<func name="Area" text="区域管理" >
+				<privilege text="浏览" name="view"/>
+				<privilege text="增加" name="add"/>
+				<privilege text="删除" name="del"/>
+				<privilege text="修改" name="edit"/>
+				<privilege text="添加员工" name="addEmployee"/>
+				<privilege text="移除员工" name="removeEmployee"/>
+			</func>--> 
+			<func name="Organization" text="组织机构" >
+				<privilege text="浏览" name="view"/>
+				<privilege text="增加" name="add"/>
+				<privilege text="删除" name="del"/>
+				<privilege text="修改" name="edit"/>
+				<privilege text="添加员工" name="addEmployee"/>
+				<privilege text="移除" name="removeEmployee"/>
+			</func>  
+			<func name="User" text="用户管理" >
+				<privilege text="浏览" name="view"/>
+				<privilege text="增加" name="add"/>
+				<privilege text="删除" name="del"/>
+				<privilege text="修改" name="edit"/>
+				<privilege text="锁定" name="lock"/>	
+				<privilege text="导入员工" name="importUser"/>			
+			</func>
+			<func name="Role" text="角色管理" >
+				<privilege text="浏览" name="view"/>
+				<privilege text="增加" name="add"/>
+				<privilege text="删除" name="del"/>
+				<privilege text="修改" name="edit"/>
+			</func> 
+			<func name="SysOperate" text="考勤管理员操作">
+				<privilege text="浏览" name="view"/>
+				<privilege text="增加" name="add"/>
+				<privilege text="删除" name="del"/>
+				<privilege text="修改" name="edit"/>
+			</func>
+			<func name="Dict" text="字典管理" >
+				<privilege text="浏览" name="view"/>
+				<privilege text="增加" name="add"/>
+				<privilege text="删除" name="del"/>
+				<privilege text="修改" name="edit"/>
+			</func>			
+			<func name="Config" text="系统参数" >
+				<privilege text="浏览" name="view"/>
+				<privilege text="修改" name="edit"/>
+			</func>
+			<func name="Log" text="用户操作日志" >
+				<privilege text="浏览" name="view"/>
+			</func>
+			<func name="Man" text="系统管理">
+				<privilege text="浏览" name="view"/>
+			</func>
+		</func>
+		<func name="MAttendance" text="移动考勤确认" icon="settings" type="category">
+			<func name="MeetOrTrain" text="确认移动考勤补刷">
+				<privilege text="浏览" name="view"/>
+				<privilege text="增加" name="add"/>
+				<privilege text="删除" name="del"/>
+				<privilege text="修改" name="edit"/>
+			</func>
+		</func>
+	</func>
+	
+</Functions>

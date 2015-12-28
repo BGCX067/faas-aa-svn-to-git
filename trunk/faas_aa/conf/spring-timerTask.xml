@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 这个文件用来配置Spring定时任务 -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+		default-autowire="byName">
+	<!--天定时任务-->
+	<bean id="DayTimerJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="timerTaskService" />
+		<property name="targetMethod" value="addAttShift" />
+	</bean>
+	<bean id="DayCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="DayTimerJob" />
+		<property name="cronExpression" value="00 28 23 * * ?" />
+	</bean>
+	<!--每月一号定时计算年假-->
+	<bean id="monthJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="timerTaskService" />
+		<property name="targetMethod" value="monthAnnualHoliday" />
+	</bean>
+	<bean id="monthTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="monthJob" />
+		<property name="cronExpression" value="10 10 23 01 * ?" />
+	</bean>
+	
+	<!--增加一个年定时任务-->
+	<bean id="YearTimer" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="timerTaskService"/>
+		<property name="targetMethod" value="annualLeaveJob"/>
+	</bean>
+	
+	<bean id="YearCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="YearTimer" />
+		<property name="cronExpression" value="10 28 22 01 01 ?" />
+	</bean>
+	<!--状态定时任务-->
+	<bean id="DeviceStatusTimerJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="timerTaskService" />
+		<property name="targetMethod" value="deviceStatus" />
+	</bean>	   			
+	<bean id="DeviceStatusCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="DeviceStatusTimerJob" />
+		<property name="cronExpression" value="0 0/3 7-23 * * ?" />
+		 <!--<property name="startDelay" value="10000" />
+		<property name="repeatInterval" value="200000"/>-->
+	</bean>
+		<!--工作到次日计算-->
+	<bean id="NextDayTimerJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="timerTaskService" />
+		<property name="targetMethod" value="computerShiftConfigNextDay" />
+	</bean>
+	<bean id="NextDayCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="NextDayTimerJob" />
+		<property name="cronExpression" value="00 30 22 * * ?" />
+	</bean>
+<!--	<bean id="backUpDataBase" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="timerTaskService" />
+		<property name="targetMethod" value="backDataBase" />
+	</bean>
+	<bean id="backUp" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="backUpDataBase" />
+		<property name="cronExpression" value="00 00 00 * * ?" />
+	</bean>-->
+	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="DayCronTrigger" />
+				<ref bean="DeviceStatusCronTrigger" />
+				<ref bean="YearCronTrigger"/>
+				<ref bean="NextDayCronTrigger" />
+				<ref bean="monthTrigger"/>
+			<!--	<ref bean="backUp"/>-->
+			</list>
+		</property>
+	</bean>
+
+</beans>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dicts>
+
+	<dict key="sex" text="性别代码">
+		<dict key="01" text="男"/>
+		<dict key="02" text="女"/>
+	</dict>
+	
+	<dict key="organizationType" text="组织类型" type="system">
+		<dict key="01" text="网点" type="system"/>
+		<dict key="02" text="支行" type="system"/>
+		<dict key="03" text="部门"/>
+		<dict key="04" text="单位"/>
+	</dict>
+	
+	<dict key="level" text="重要程序">
+		<dict key="01" text="一般"/>
+		<dict key="02" text="重要"/>
+		<dict key="03" text="紧急且重要"/>
+	</dict>
+	
+	<dict key="employeeStatus" text="在职情况">
+		<dict key="1" text="在职" />
+		<dict key="2" text="试用"/>
+		<dict key="3" text="休假"/>
+		<dict key="4" text="离职"/>
+	</dict>
+	
+	<dict key="industry" text="行业分类">
+		<dict key="A" text="农、林、牧、渔业"/>
+		<dict key="B" text="采矿业"/>
+		<dict key="C" text="制造业"/>
+		<dict key="D" text="电力、燃气及水的生产和供应业"/>
+		<dict key="E" text="建筑业"/>
+		<dict key="F" text="交通运输、仓储和邮政业"/>
+		<dict key="G" text="信息传输、计算机服务和软件业"/>
+		<dict key="H" text="批发和零售业"/>
+		<dict key="I" text="住宿和餐饮业"/>
+		<dict key="J" text="金融业"/>
+		<dict key="K" text="房地产业"/>
+		<dict key="L" text="租赁和商务服务业"/>
+		<dict key="M" text="科学研究、技术服务和地质勘查业"/>
+		<dict key="N" text="水利、环境和公共设施管理业"/>
+		<dict key="O" text="居民服务和其他服务业"/>
+		<dict key="P" text="教育"/>
+		<dict key="Q" text="卫生、社会保障和社会福利业"/>
+		<dict key="R" text="文化、体育和娱乐业"/>
+		<dict key="S" text="公共管理与社会组织"/>
+		<dict key="T" text="国际组织"/>
+	</dict>
+	<dict key="position" text="岗位名称代码">
+		<dict key="01" text="产品经理岗"/>
+		<dict key="02" text="呼入客服代表"/>
+		<dict key="03" text="副总经理"/>
+		<dict key="04" text="客户经理岗"/>
+		<dict key="05" text="柜员"/>
+		<dict key="06" text="理财经理"/>
+		<dict key="07" text="行长"/>
+		<dict key="08" text="销售支持岗"/>
+		<dict key="09" text="成品卡管理岗"/>
+		<dict key="10" text="其他"/>
+	</dict>
+	<dict key="education" text="学历">
+		<dict key="01" text="院士"/>
+		<dict key="02" text="博士后"/>
+		<dict key="03" text="博士"/>
+		<dict key="04" text="硕士"/>
+		<dict key="05" text="本科"/>
+		<dict key="06" text="大专"/>
+		<dict key="07" text="高中"/>
+	</dict>
+	<dict key="peopleType" text="员工类别代码">
+		<dict key="01" text="中长期劳动合同员工"/>
+		<dict key="02" text="劳务用工"/>
+		<dict key="03" text="短期劳动合同员工"/>
+		<dict key ="04" text="其他"/>
+	<!--	<dict key="05" text="定向招聘劳动合同员工"/>
+		<dict key="06" text="其他"/>-->
+	</dict>
+	<dict key="leaveType" text="请假类型">
+		<dict key="01" text="事假"/>
+		<dict key="02" text="病假"/>
+		<dict key="03" text="福利假"/>
+			<dict key="03_1" text="年假"/>
+			<dict key="03_2" text="探亲假"/>
+			<dict key="03_3" text="看护假"/>
+			<dict key="03_4" text="婚假"/>
+			<dict key="03_5" text="丧假"/>
+
+		<dict key="04" text="生育假"/>
+			<dict key="04_1" text="产假"/>
+			<dict key="04_2" text="哺乳假"/>
+			<dict key="04_3" text="看护假"/>
+			<dict key="04_4" text="计划生育假"/>
+		<dict key="05" text="工伤假"/>
+	</dict>
+	<dict key="postType" text="岗位类型">
+		<dict key="01" text="员工"/>
+		<dict key="02" text="一级部门主要负责人"/>
+		<dict key="03" text="一级部门其他负责人"/>
+		<dict key="04" text="二级部（中心）主要负责人人"/>
+		<dict key="05" text="对公区域团队主要负责人"/>
+		<dict key="06" text="二级部（中心）其他负责人"/>
+		<dict key="07" text="对公区域团队其他负责人"/>
+		<dict key="08" text="区域消费信贷部负责人"/>
+		<dict key="09" text="区域总经理"/>
+		<dict key="10" text="副总经理"/>
+		<dict key="11" text="支行行长"/>
+		<dict key="12" text="支行副行长"/>
+	</dict>
+	
+</dicts>

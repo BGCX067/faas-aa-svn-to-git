@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 这个是Spring的主要配置文件,用来配置事务,日志,数据源等 -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd 
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+		default-autowire="byName">
+	
+	<bean id="defaultDs" destroy-method="close" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:sqlserver://localhost:1433; DatabaseName=faas1115"/>
+		<property name="user" value="sa"/>
+		<property name="password" value="fortunes"/>
+        <property name="maxPoolSize" value="40"/>
+		<property name="maxIdleTime" value="1800"/>
+	</bean>
+	
+	
+	<!--<bean id="defaultDs" destroy-method="close" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:sqlserver://10.9.3.204:1433; DatabaseName=faas"/>
+		<property name="user" value="sa"/>
+		<property name="password" value="123456"/>
+        <property name="maxPoolSize" value="40"/>
+		<property name="maxIdleTime" value="1800"/>
+	</bean>-->
+		
+	<!--<bean id="defaultDs" destroy-method="close
+	" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/faas"/>
+		<property name="user" value="root"/>
+		<property name="password" value="fortunes"/>
+		<property name="maxIdleTime" value="1800"/>
+	</bean>-->
+	
+	 <!--<bean id="defaultDs" destroy-method="close" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:sqlserver://58.0.191.14:2423; DatabaseName=faas"/>
+		<property name="user" value="ygkq"/>
+		<property name="password" value="111222"/>
+        <property name="maxPoolSize" value="40"/>
+		<property name="maxIdleTime" value="1800"/>
+	</bean> -->
+	
+	
+	
+	<bean id="closureDs" destroy-method="close" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:sqlserver://58.88.178.1:1433; DatabaseName=Amadeus5"/>
+		<property name="user" value="sa"/>
+		<property name="password" value="sajsyh"/>
+		<property name="maxIdleTime" value="1800"/>
+	</bean>
+	
+
+	
+	<!--<bean id="closureDs" destroy-method="close" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:sqlserver://10.9.3.204:1433; DatabaseName=faas"/>
+		<property name="user" value="sa"/>
+		<property name="password" value="123456"/>
+		<property name="maxIdleTime" value="1800"/>
+	</bean>-->
+	
+	 <bean id="closureJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="closureDs"/>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="defaultDs"/>
+        <property name="annotatedClasses">
+		   <list>
+		      <value>com.fortunes.fjdp.admin.model.Config</value>
+		      <value>com.fortunes.fjdp.admin.model.Menu</value>
+		      <value>com.fortunes.fjdp.admin.model.Dict</value>
+		      <value>com.fortunes.fjdp.admin.model.Privilege</value>
+		      <value>com.fortunes.fjdp.admin.model.Role</value>
+		      <value>com.fortunes.fjdp.admin.model.User</value>
+		      <value>com.fortunes.fjdp.admin.model.Employee</value>
+		      <value>com.fortunes.fjdp.admin.model.Organization</value>
+		      <value>com.fortunes.fjdp.admin.model.Notice</value>
+		      <value>com.fortunes.fjdp.admin.model.NoticeMessage</value>
+		      <value>com.fortunes.fjdp.admin.model.UserMessage</value>
+		      <value>com.fortunes.fjdp.admin.model.Notice</value>
+		      <value>com.fortunes.fjdp.admin.model.Log</value>
+		      
+		      <value>com.fortunes.faas.model.AttendanceLog</value>
+		      <value>com.fortunes.faas.model.Device</value>
+		      <value>com.fortunes.faas.model.OperateCmd</value>
+		      <value>com.fortunes.faas.model.AttShift</value>
+		      <value>com.fortunes.faas.model.AttendancePlus</value>
+		      <value>com.fortunes.faas.model.ShiftConfig</value>
+		      <value>com.fortunes.faas.model.HolidayApply</value>
+		      <value>com.fortunes.faas.model.ApproveProcess</value>
+		      <value>com.fortunes.faas.model.WorkingArea</value>
+		      <value>com.fortunes.faas.model.MonthStatistics</value>
+		      <value>com.fortunes.faas.model.MeetOrTrain</value>
+		      <value>com.fortunes.faas.model.MoveAttInfo</value>
+		      <value>com.fortunes.faas.model.ShiftConfigBundle</value>
+		      <value>com.fortunes.faas.model.ShiftConfigTemplate</value>
+		      <value>com.fortunes.faas.model.ShiftConfigApply</value>
+		      <value>com.fortunes.faas.model.BranchShiftAnalysis</value>
+		      <value>com.fortunes.faas.model.AttShiftReportApply</value>
+		      <value>com.fortunes.faas.model.ShiftConfigTime</value>
+		      <value>com.fortunes.faas.model.DefaultTime</value>
+		      <!--
+		      <value type="resource">jbpm.repository.hbm.xml</value>
+		      <value type="resource">jbpm.execution.hbm.xml</value>
+		      <value type="resource">jbpm.history.hbm.xml</value>
+		      <value type="resource">jbpm.task.hbm.xml</value>
+		      -->
+		   </list>
+		 </property>
+		 
+		 <property name="hibernateProperties">
+			  <props>
+		<!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>-->
+		<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+					<prop key="hibernate.show_sql">true</prop>
+					<prop key="hibernate.hbm2ddl.auto">update</prop>
+
+			  </props>
+		</property>
+    </bean>
+    
+    
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="defaultDs"/>
+    </bean>
+    
+    <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+    	<property name="dataSource" ref="defaultDs"/>
+    	<property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+    	<property name="transactionManager" ref="txManager"/>
+	</bean>
+    
+    <tx:advice id="txAdvice" transaction-manager="txManager" >
+    	<tx:attributes>
+    		<tx:method name="has*" read-only="true"/>
+    		<tx:method name="get*" read-only="true"/>
+    		<tx:method name="load*" read-only="true"/>
+    		<tx:method name="addAttShift" propagation="NEVER"/>
+    		<tx:method name="*" />
+    	</tx:attributes>
+    </tx:advice>
+    
+    <bean id="logAdvice" class="net.fortunes.core.log.LogAdvice"/>
+    
+    <aop:config>
+    	<aop:advisor advice-ref="txAdvice" 
+    		pointcut="execution(* *.fortunes..*Service.*(..)) or execution(* misc..*execute(..))"/>
+    	<aop:advisor advice-ref="logAdvice" 
+    		pointcut="execution(* *.fortunes..*Service.*(..)) "/>
+    </aop:config>
+       
+	<bean id="genericDao" class="net.fortunes.core.dao.GenericDao">
+    	<property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <bean id="initDb" class="misc.InitDb"/>
+    <bean id="test" class="misc.Test"/>
+    
+    <context:annotation-config/>
+    <context:component-scan base-package="net.fortunes,com.fortunes"/>
+</beans>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.SlashesInActionNames" value="true"/>
+	<constant name="struts.i18n.encoding" value="utf-8"/>
+	<constant name="struts.action.excludePattern" value="/webService.*"/>
+	<constant name="struts.multipart.maxSize" value="10000000" />
+	
+	<package name="app-default" abstract="true" extends="struts-default">
+		<interceptors>
+    		<interceptor-stack name="appStack">
+    			<interceptor-ref name="defaultStack"/>
+    			<interceptor-ref name="annotationWorkflow"/>
+    		</interceptor-stack>
+    	</interceptors>
+
+    	<global-results>
+    		<result name="login" type="redirect">/</result>
+		    <result name="viewport">/main/viewport.jsp</result>
+		    <result name="exception">/common/exception.jsp</result>
+		    <result name="authFaild">/common/authFaild.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="exception"/>
+      	</global-exception-mappings>
+	</package>
+	
+    <package name="all" extends="app-default">
+  		<default-interceptor-ref name="appStack"/>
+        <action name="*/*" class="{1}Action" method="{2}">
+        	<result name="template">/templates/{1}/{2}.jsp</result>
+        </action>
+    </package>
+        
+</struts>

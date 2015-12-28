@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wls:weblogic-web-app xmlns:wls="http://www.bea.com/ns/weblogic/weblogic-web-app"
+					  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+					  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://www.bea.com/ns/weblogic/weblogic-web-app http://www.bea.com/ns/weblogic/weblogic-web-app/1.0/weblogic-web-app.xsd">
+    <wls:container-descriptor>
+		<wls:prefer-web-inf-classes>true</wls:prefer-web-inf-classes>
+	</wls:container-descriptor>
+    <wls:weblogic-version>10.3.0</wls:weblogic-version>
+    <wls:context-root>/</wls:context-root>
+    <wls:charset-params>  
+        <wls:input-charset>  
+        <!--weblogi中设置默认的字符集编码方式-->
+            <wls:resource-path>/*</wls:resource-path>  
+            <wls:java-charset-name>UTF-8</wls:java-charset-name>  
+        </wls:input-charset>  
+    </wls:charset-params>  
+</wls:weblogic-web-app>  
+<!--  
+  <!DOCTYPE weblogic-web-app 
+   PUBLIC "-//BEA Systems, Inc.//DTD Web Application 8.1//EN" 
+    "http://www.bea.com/servers/wls810/dtd/weblogic810-web-jar.dtd" > 
+-->

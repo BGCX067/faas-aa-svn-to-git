@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+  <context-param>
+    <javaee:param-name>contextConfigLocation</javaee:param-name>
+    <javaee:param-value>
+	    	classpath*:spring-core.xml,
+	    	classpath*:spring-flex.xml,
+	    	classpath*:spring-server.xml,
+	    	classpath*:spring-jbpm.xml,
+	    	classpath*:spring-timerTask.xml    	
+	    </javaee:param-value>
+  </context-param>
+  <filter>
+    <filter-name>hibernateFilter</filter-name>
+    <filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>hibernateFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <listener>
+    <javaee:listener-class>org.springframework.web.context.ContextLoaderListener</javaee:listener-class>
+  </listener>
+  <servlet>
+    <servlet-name>spring-flex</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <javaee:param-name>contextConfigLocation</javaee:param-name>
+      <javaee:param-value>/WEB-INF/flex/spring-flex-servlet.xml</javaee:param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>spring-flex</servlet-name>
+    <url-pattern>/messagebroker/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>jaxws-servlet</servlet-name>
+    <servlet-class>com.sun.xml.ws.transport.http.servlet.WSSpringServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>jaxws-servlet</servlet-name>
+    <url-pattern>/webService</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+  <jsp-config>
+    <taglib>
+      <taglib-uri>/birt.tld</taglib-uri>
+      <taglib-location>/WEB-INF/tld/birt.tld</taglib-location>
+    </taglib>
+  </jsp-config>
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+</web-app>
+
+-->
+
+
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<!-- Spring配置文件 -->
+	<context-param>
+	    <param-name>contextConfigLocation</param-name>
+	    <param-value>
+	    	classpath*:spring-core.xml,
+	    	classpath*:spring-flex.xml,
+	    	classpath*:spring-server.xml,
+	    	classpath*:spring-jbpm.xml,
+	    	classpath*:spring-timerTask.xml    	
+	    </param-value>
+	</context-param>
+	
+	<!-- Spring内置openSessionInView过滤器 -->
+	<filter>
+		<filter-name>hibernateFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+	<filter-mapping>
+        <filter-name>hibernateFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+	
+	<!-- Struts2 -->
+	<filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+	<listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
+    <!-- flex&spring -->
+    <servlet>
+        <servlet-name>spring-flex</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+        	<param-name>contextConfigLocation</param-name>
+        	<param-value>/WEB-INF/flex/spring-flex-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>spring-flex</servlet-name>
+        <url-pattern>/messagebroker/*</url-pattern>
+    </servlet-mapping>
+     <!-- end -->
+    
+    <!-- these are for JAX-WS -->
+	<servlet>
+	  <servlet-name>jaxws-servlet</servlet-name>
+	  <servlet-class>com.sun.xml.ws.transport.http.servlet.WSSpringServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>jaxws-servlet</servlet-name>
+	  <url-pattern>/webService</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/birt.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tld/birt.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+	
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	
+ 
+	
+</web-app>
+
